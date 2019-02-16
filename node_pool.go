@@ -2,8 +2,8 @@ package dcron
 
 import (
 	"sync"
-	"github.com/LibiChai/dcron/consistenthash"
-	"github.com/LibiChai/dcron/driver"
+	"github.com/bencen/dcron/consistenthash"
+	"github.com/bencen/dcron/driver"
 	"time"
 )
 const defaultReplicas = 50

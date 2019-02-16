@@ -2,8 +2,8 @@ package dcron
 
 import (
 	"sync"
-	"github.com/robfig/cron"
-	"github.com/LibiChai/dcron/driver"
+	"github.com/bencen/cron"
+	"github.com/bencen/dcron/driver"
 )
 
 
@@ -39,7 +39,12 @@ func(this *Dcron)AddFunc(jobName,cronStr string,cmd func()){
 		Dcron:this,
 	}
 
-	this.cr.AddJob(cronStr,job)
+	this.cr.AddJob(cronStr,job,jobName)
+}
+
+func(this *Dcron)RemoveFunc(jobName string){
+
+	this.cr.RemoveJob(jobName)
 }
 
 func(this *Dcron)allowThisNodeRun(jobName string) bool{
