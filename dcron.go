@@ -30,7 +30,7 @@ func NewDcron(serverName,driverName string, dataSourceOption driver.DriverConnOp
 	return dcron
 }
 
-func(this *Dcron)AddFunc(jobName,cronStr string,cmd func()){
+func(this *Dcron)AddFunc(jobName,Name,cronStr string,cmd func()){
 
 	job := JobWarpper{
 		Name:jobName,
@@ -39,12 +39,12 @@ func(this *Dcron)AddFunc(jobName,cronStr string,cmd func()){
 		Dcron:this,
 	}
 
-	this.cr.AddJob(cronStr,job,jobName)
+	this.cr.AddJob(cronStr,job,Name)
 }
 
-func(this *Dcron)RemoveFunc(jobName string){
+func(this *Dcron)RemoveFunc(Name string){
 
-	this.cr.RemoveJob(jobName)
+	this.cr.RemoveJob(Name)
 }
 
 func(this *Dcron)allowThisNodeRun(jobName string) bool{
